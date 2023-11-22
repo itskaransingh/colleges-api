@@ -52,6 +52,9 @@ app.get("/colleges/search", function (req, res) {
   var limitWithOffset = offset + limit;
 
   for (i = offset; i < limitWithOffset; i++) {
+	if (i >= result.length) {
+		break;
+	}
     limitResult.push(result[i]);
   }
 
