@@ -41,12 +41,13 @@ app.post('/colleges/total', function (req, res) {
 })
 
 
-app.post('/colleges/search', function (req, res) {
+app.get('/colleges/search', function (req, res) {
 
-	var keyword = req.headers.keyword.toLowerCase();
+	var keyword = req.query.keyword.toLowerCase();
+	var limit = parseInt(req.query.limit);
 	var result = [];
 
-	for(var i = 0 ; i < colleges.length ; i++){
+	for(var i = 0 ; i < limit ; i++){
 
 		if(colleges[i][2].toLowerCase().indexOf(keyword)>=0){	
 
