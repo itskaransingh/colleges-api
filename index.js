@@ -31,8 +31,8 @@ app.post("/colleges/total", function (req, res) {
 
 app.get("/colleges/search", function (req, res) {
   var keyword = req.query.keyword.toLowerCase();
-  var limit = parseInt(req.query.limit) ?? 10;
-  var offset = parseInt(req.query.offset) ?? 0;
+  var limit = parseInt(req.query.limit ?? "10");
+  var offset = parseInt(req.query.offset ?? "0") ;
   console.log({ keyword, limit, offset });
   var result = [];
 
@@ -49,7 +49,7 @@ app.get("/colleges/search", function (req, res) {
   }
 
   var limitResult = [];
-  var limitWithOffset = Number(offset) + limit;
+  var limitWithOffset = offset + limit;
 
   for (i = offset; i < limitWithOffset; i++) {
     limitResult.push(result[i]);
